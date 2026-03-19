@@ -1,0 +1,200 @@
+/* ========================================================================== */
+/* EXISTING FILE LIST COMPONENT (Global Theme Compatible)                     */
+/* ========================================================================== */
+.existing-file-list {
+  font-family: "Poppins", "Inter", sans-serif;
+  color: var(--text-main);
+  width: 100%;
+  transition: color 0.3s ease;
+}
+
+/* --- Documents Grid --- */
+.existing-file-list .doc-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* --- Individual Document Item --- */
+.existing-file-list .doc-item {
+  aspect-ratio: 1 / 1.1;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  border: 1px solid var(--card-border);
+  transition: all 0.25s ease;
+}
+
+.existing-file-list .doc-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Marked for Deletion --- */
+.existing-file-list .doc-item.marked {
+  opacity: 0.6;
+  filter: grayscale(80%);
+  transform: scale(0.98);
+}
+
+/* --- File Previews --- */
+.existing-file-list .doc-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.existing-file-list .doc-preview-file {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--input-bg);
+  color: var(--text-muted);
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* --- Filename Text --- */
+.existing-file-list .pdf-name {
+  font-weight: 500;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  font-size: 0.875rem;
+}
+
+/* --- Document Actions --- */
+.existing-file-list .doc-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.existing-file-list .doc-item.marked .doc-actions {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.existing-file-list .doc-download,
+.existing-file-list .doc-remove {
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .existing-file-list .doc-download,
+[data-theme="dark"] .existing-file-list .doc-remove {
+  background: rgba(31, 41, 55, 0.9);
+  color: var(--text-main);
+}
+
+.existing-file-list .doc-remove {
+  color: #ef4444;
+}
+
+.existing-file-list .doc-download:hover,
+.existing-file-list .doc-remove:hover {
+  transform: scale(1.1);
+}
+
+.existing-file-list .doc-remove:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+/* --- Marked Delete Overlay ("Undo" Button) --- */
+.existing-file-list .doc-marked-delete {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #15803d;
+  font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.existing-file-list .doc-item.marked .doc-marked-delete {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.existing-file-list .doc-marked-delete:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background-color: var(--card-bg);
+}
+
+/* --- Responsive --- */
+@media (max-width: 760px) {
+  .existing-file-list .doc-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* ========================================================================== */
+/* GLOBAL THEME VARIABLES (Matching File Uploader & Update User)              */
+/* ========================================================================== */
+:root {
+  --bg-gradient: linear-gradient(to right bottom, #42a5f5, #a855f7, #ec4899);
+  --card-bg: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --input-border: #d1d5db;
+  --input-focus: #60a5fa;
+  --input-bg: #f9fafb;
+  --icon-color: #9ca3af;
+  --button-bg: linear-gradient(to right, #25aae1, #b84fce);
+  --button-text: #ffffff;
+  --card-border: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  --bg-gradient: linear-gradient(to right bottom, #0f172a, #1e293b, #334155);
+  --card-bg: #1f2937;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --input-border: #4b5563;
+  --input-focus: #60a5fa;
+  --input-bg: #1f2937;
+  --icon-color: #ffffff;
+  --button-bg: linear-gradient(to right, #2563eb, #9333ea);
+  --button-text: #ffffff;
+  --card-border: #374151;
+}

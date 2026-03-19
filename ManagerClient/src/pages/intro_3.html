@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>uniflowww - Flowing Light Animation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #0a0022, #000);
+      overflow: hidden;
+    }
+
+    .flow {
+      position: absolute;
+      width: 300%;
+      height: 200px;
+      background: linear-gradient(90deg, 
+        transparent, 
+        #00ffff, 
+        #ff00ff, 
+        #ffff00, 
+        #ff00ff, 
+        #00ffff, 
+        transparent
+      );
+      filter: blur(20px);
+      opacity: 0.7;
+      animation: flow 8s linear infinite;
+      transform: rotate(-15deg);
+    }
+
+    .flow:nth-child(1) { top: 10%; animation-delay: 0s; }
+    .flow:nth-child(2) { top: 25%; animation-delay: -2s; }
+    .flow:nth-child(3) { top: 40%; animation-delay: -4s; }
+    .flow:nth-child(4) { top: 55%; animation-delay: -1s; }
+    .flow:nth-child(5) { top: 70%; animation-delay: -3s; }
+    .flow:nth-child(6) { top: 85%; animation-delay: -5s; }
+
+    @keyframes flow {
+      0% { transform: translateX(-100%) rotate(-15deg); }
+      100% { transform: translateX(100%) rotate(-15deg); }
+    }
+
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 8vw;
+      font-weight: 900;
+      color: white;
+      text-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 40px #00ffff,
+        0 0 60px #ff00ff,
+        0 0 80px #ffff00;
+      letter-spacing: 0.05em;
+      z-index: 10;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 40px #00ffff,
+        0 0 60px #ff00ff,
+        0 0 80px #ffff00; }
+      50% { text-shadow: 
+        0 0 30px rgba(255, 255, 255, 1),
+        0 0 60px #00ffff,
+        0 0 90px #ff00ff,
+        0 0 120px #ffff00; }
+    }
+
+    .glow-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1), transparent 70%);
+      pointer-events: none;
+      animation: breathe 6s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="flow"></div>
+    <div class="flow"></div>
+    <div class="flow"></div>
+    <div class="flow"></div>
+    <div class="flow"></div>
+    <div class="flow"></div>
+    
+    <div class="logo">uniflowww</div>
+    <div class="glow-overlay"></div>
+  </div>
+</body>
+</html>

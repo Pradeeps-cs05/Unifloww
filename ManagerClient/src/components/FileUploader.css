@@ -1,0 +1,206 @@
+/* ========================================================================== */
+/* FILE UPLOADER COMPONENT (Global Theme Compatible)                          */
+/* ========================================================================== */
+.file-uploader {
+  width: 100%;
+  font-family: "Poppins", "Inter", sans-serif;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+/* --- Dropzone --- */
+.file-uploader .drop-zone {
+  border: 2px dashed var(--card-border);
+  border-radius: 1rem;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  transition: all 0.25s ease;
+  background-color: var(--card-bg);
+  cursor: pointer;
+}
+
+.file-uploader .drop-zone p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* Drag-over state */
+.file-uploader .drop-zone.drag-over {
+  border-color: var(--input-focus);
+  background-color: rgba(96, 165, 250, 0.1);
+}
+
+/* --- Main "Choose Files" Button --- */
+.file-uploader .choose-files-btn {
+  margin-top: 1rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  font-weight: 600;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.file-uploader .choose-files-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.file-uploader .choose-files-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Documents Grid --- */
+.file-uploader .doc-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* --- Each File Item --- */
+.file-uploader .doc-item {
+  aspect-ratio: 1 / 1.1;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  border: 1px solid var(--card-border);
+  transition: all 0.25s ease;
+}
+
+.file-uploader .doc-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- File Previews --- */
+.file-uploader .doc-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.file-uploader .doc-preview-file {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--input-bg);
+  color: var(--text-muted);
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* --- Filename --- */
+.file-uploader .pdf-name {
+  font-weight: 500;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  font-size: 0.875rem;
+}
+
+/* --- Action Buttons --- */
+.file-uploader .doc-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.file-uploader .doc-download,
+.file-uploader .doc-remove {
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .file-uploader .doc-download,
+[data-theme="dark"] .file-uploader .doc-remove {
+  background: rgba(31, 41, 55, 0.9);
+  color: var(--text-main);
+}
+
+.file-uploader .doc-remove {
+  color: #ef4444;
+}
+
+.file-uploader .doc-download:hover,
+.file-uploader .doc-remove:hover {
+  transform: scale(1.1);
+}
+
+.file-uploader .doc-remove:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+/* --- Responsive --- */
+@media (max-width: 760px) {
+  .file-uploader .doc-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* ========================================================================== */
+/* GLOBAL THEME VARIABLES (Matching UpdateUser Component)                     */
+/* ========================================================================== */
+:root {
+  --bg-gradient: linear-gradient(to right bottom, #42a5f5, #a855f7, #ec4899);
+  --card-bg: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --input-border: #d1d5db;
+  --input-focus: #60a5fa;
+  --input-bg: #f9fafb;
+  --icon-color: #9ca3af;
+  --button-bg: linear-gradient(to right, #25aae1, #b84fce);
+  --button-text: #ffffff;
+  --card-border: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  --bg-gradient: linear-gradient(to right bottom, #0f172a, #1e293b, #334155);
+  --card-bg: #1f2937;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --input-border: #4b5563;
+  --input-focus: #60a5fa;
+  --input-bg: #1f2937;
+  --icon-color: #ffffff;
+  --button-bg: linear-gradient(to right, #2563eb, #9333ea);
+  --button-text: #ffffff;
+  --card-border: #374151;
+}

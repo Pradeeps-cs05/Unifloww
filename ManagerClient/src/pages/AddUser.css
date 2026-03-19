@@ -1,0 +1,248 @@
+/* ========================================================================== */
+/* ADD USER COMPONENT (Global Theme Compatible)                               */
+/* ========================================================================== */
+.add-user {
+  font-family: "Poppins", "Inter", sans-serif;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+/* --- Page Layout --- */
+.add-user .add-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--bg-gradient);
+  transition: background 0.3s ease;
+}
+
+/* --- Main Card --- */
+.add-user .add-card {
+  width: 100%;
+  max-width: 1200px;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--card-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.add-user .add-card:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Header --- */
+.add-user .add-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.add-user .add-title {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+/* --- Buttons: Logout, Dashboard, Submit --- */
+.add-user .add-logout,
+.add-user .add-dashboard,
+.add-user .add-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--button-text);
+  background: var(--button-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.add-user .add-logout:hover:not(:disabled),
+.add-user .add-dashboard:hover:not(:disabled),
+.add-user .add-submit:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.add-user .add-submit:disabled,
+.add-user .add-logout:disabled,
+.add-user .add-dashboard:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Form Layout --- */
+.add-user .add-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem 2rem;
+}
+
+/* --- Form Fields --- */
+.add-user .field span {
+  display: block;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 1.125rem;
+  transition: color 0.3s ease;
+}
+
+.add-user .field input,
+.add-user .field textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-main);
+  outline: none;
+  font-size: 1.125rem;
+  padding: 0.5rem 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.add-user .field input:focus,
+.add-user .field textarea:focus {
+  border-bottom-color: var(--input-focus);
+  box-shadow: none;
+}
+
+.add-user .field textarea {
+  min-height: 56px;
+  resize: vertical;
+}
+
+.add-user .full-row {
+  grid-column: 1 / -1;
+}
+
+.add-user .form-section {
+  grid-column: 1 / -1;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 1rem;
+}
+
+.add-user .section-title {
+  grid-column: 1 / -1;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 0.5rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- Sticky Submit --- */
+.add-user .submit-wrapper {
+  position: sticky;
+  bottom: 0;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0 0;
+  margin-top: 1rem;
+  background: var(--card-bg);
+  border-top: 1px solid var(--card-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- Responsive --- */
+@media (max-width: 760px) {
+  .add-user .add-form {
+    grid-template-columns: 1fr;
+  }
+
+  .add-user .add-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .add-user .add-header > div {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .add-user .add-dashboard,
+  .add-user .add-logout {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* --- Required Star --- */
+.add-user .required-star {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* --- Confirmation Messages --- */
+.add-user .confirmation-message {
+  margin-top: 1rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.add-user .confirmation-message.success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.add-user .confirmation-message.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* --- Global Theme Variables --- */
+:root {
+  --bg-gradient: linear-gradient(to right bottom, #42a5f5, #a855f7, #ec4899);
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --input-border: #d1d5db;
+  --input-bg: #ffffff;
+  --input-focus: #60a5fa;
+  --button-bg: linear-gradient(to right, #25aae1, #b84fce);
+  --button-text: #ffffff;
+  --icon-color: #3b82f6;
+  --icon-hover: #6366f1;
+}
+
+/* --- Dark Theme Variables --- */
+[data-theme="dark"] {
+  --bg-gradient: linear-gradient(to right bottom, #0f172a, #1e293b, #334155);
+  --card-bg: #1f2937;
+  --card-border: #4b5563;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --input-border: #4b5563;
+  --input-bg: #1f2937;
+  --input-focus: #60a5fa;
+  --button-bg: linear-gradient(to right, #2563eb, #9333ea);
+  --button-text: #ffffff;
+  --icon-color: #ffffff;
+  --icon-hover: #60a5fa;
+}

@@ -1,0 +1,25 @@
+/* src/components/WaterBall.css */
+
+.water-ball-container {
+  /* This is just a simple wrapper. The SVG handles the shape. */
+}
+
+/* Base style for both wave paths */
+.wave {
+  /* The animation that moves the waves horizontally */
+  animation: wave-animation 4s linear infinite;
+}
+
+/* The back wave has a slightly different, offset animation */
+.wave-back {
+  animation-duration: 5s;
+}
+
+@keyframes wave-animation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200px); /* Moves exactly one wave cycle */
+  }
+}

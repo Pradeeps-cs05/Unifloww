@@ -1,0 +1,75 @@
+/* src/components/TextFill.css */
+
+.text-fill-container {
+  width: 90vw;
+  max-width: 1200px;
+  height: 180px;
+}
+
+.text-fill-container .text-mask {
+  font-family: "Poppins", "Inter", sans-serif;
+  font-size: 140px; 
+  font-weight: 800;
+  letter-spacing: -2px;
+  stroke: none;
+}
+
+.text-fill-container .text-background {
+  font-family: "Poppins", "Inter", sans-serif;
+  font-size: 140px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  fill: white; 
+}
+
+/* --- THE NEW COLOR STYLES --- */
+
+/* This styles the main, light blue water body (the rectangle) */
+.text-fill-container .water-body {
+  fill: #42a5f5; /* Light blue from your image */
+}
+
+/* This styles the darker blue wave that sits on top */
+.text-fill-container .text-wave-wave-front {
+  fill: #a855f7; /* Darker blue from your image */
+  opacity: 0.8;
+  animation: text-wave-animation1 5s linear infinite;
+}
+
+/* This styles the darker blue wave that sits on top */
+.text-fill-container .text-wave-wave-back {
+  fill: #ec4899; /* Darker blue from your image */
+  opacity: 0.8;
+  animation: text-wave-animation2 5s linear infinite;
+}
+
+
+@keyframes text-wave-animation1 {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(400px);
+  }
+}
+
+@keyframes text-wave-animation2 {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(600px);
+  }
+}
+
+/*
+
+### Summary of the Fix:
+
+1.  **New SVG Structure:** Inside the moving group, we now have two distinct layers: a light blue `<rect>` that forms the main body of water with a straight top edge, and a darker blue `<path>` that sits on top of it to form the moving wave.
+2.  **Solid Colors:** The CSS now uses solid `fill` colors for both the water body and the wave, perfectly matching the colors from your reference image.
+3.  **Correct Ordering:** The `<rect>` is placed before the `<path>` in the JSX, ensuring the wave is drawn on top of the water.
+
+This will give you the exact, polished animation you are looking for.
+
+*/

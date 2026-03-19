@@ -1,0 +1,366 @@
+/* ========================================================================== */
+/* UPDATE USER COMPONENT (Global Theme Compatible)                             */
+/* ========================================================================== */
+.update-user {
+  font-family: "Poppins", "Inter", sans-serif;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+/* --- Page Layout --- */
+.update-user .update-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--bg-gradient);
+  transition: background 0.3s ease;
+}
+
+/* --- Main Card --- */
+.update-user .update-card {
+  width: 100%;
+  max-width: 1200px;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--card-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, 
+              color 0.3s ease, border-color 0.3s ease;
+}
+
+.update-user .update-card:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Header --- */
+.update-user .update-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.update-user .update-title {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+/* --- Buttons --- */
+.update-user .update-logout,
+.update-user .update-dashboard,
+.update-user .update-submit,
+.update-user .delete-client-btn,
+.update-user .update-search {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--button-text);
+  background: var(--button-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.update-user .update-logout:hover:not(:disabled),
+.update-user .update-dashboard:hover:not(:disabled),
+.update-user .update-submit:hover:not(:disabled),
+.update-user .delete-client-btn:hover:not(:disabled),
+.update-user .update-search:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.update-user .update-logout:disabled,
+.update-user .update-dashboard:disabled,
+.update-user .update-submit:disabled,
+.update-user .delete-client-btn:disabled,
+.update-user .update-search:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Form Layout --- */
+.update-user .update-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* --- Search Section --- */
+.update-user .search-section {
+  position: relative;
+}
+
+/* --- Fields --- */
+.update-user .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.update-user .field span {
+  display: block;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 1.125rem;
+  transition: color 0.3s ease;
+}
+
+.update-user .field input,
+.update-user .field textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-main);
+  outline: none;
+  font-size: 1.125rem;
+  padding: 0.5rem 0.25rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.update-user .field input:focus,
+.update-user .field textarea:focus {
+  border-bottom-color: var(--input-focus);
+  box-shadow: none;
+}
+
+.update-user .field textarea {
+  min-height: 56px;
+  resize: vertical;
+}
+
+.update-user .full-row {
+  grid-column: 1 / -1;
+}
+
+/* --- Required Star --- */
+.update-user .required-star {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* --- Form Sections --- */
+.update-user .form-section {
+  grid-column: 1 / -1;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 1rem;
+}
+
+.update-user .section-title {
+  grid-column: 1 / -1;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 0.5rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- Submit Wrapper --- */
+.update-user .submit-wrapper {
+  position: sticky;
+  bottom: 0;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+  background: var(--card-bg);
+  border-top: 1px solid var(--card-border);
+  z-index: 10;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- Confirmation Message --- */
+.update-user .confirmation-message {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.update-user .confirmation-message.success {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+.update-user .confirmation-message.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+[data-theme="dark"] .update-user .confirmation-message.success {
+  background-color: #064e3b;
+  color: #d1fae5;
+  border-color: #047857;
+}
+
+[data-theme="dark"] .update-user .confirmation-message.error {
+  background-color: #7f1d1d;
+  color: #fee2e2;
+  border-color: #dc2626;
+}
+
+/* --- Suggestions Dropdown --- */
+.update-user .suggestions-dropdown {
+  list-style: none;
+  margin: 0.5rem 0 0 0;
+  padding: 0.5rem 0;
+  border: 1px solid var(--card-border);
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--card-bg);
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.update-user .suggestions-dropdown li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: background-color 0.2s ease;
+}
+
+.update-user .suggestions-dropdown li:hover,
+.update-user .suggestions-dropdown li.selected {
+  background-color: var(--input-border);
+}
+
+/* --- Search Highlight --- */
+.update-user .highlight {
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.update-user .highlight.highlight-light {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+[data-theme="dark"] .update-user .highlight.highlight-dark {
+  background-color: #fbbf24;
+  color: #1e293b;
+}
+
+/* --- Placeholder --- */
+.update-user .no-client-placeholder {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  border: 2px dashed var(--card-border);
+  border-radius: 1rem;
+  padding: 3rem 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 760px) {
+  .update-user .update-page {
+    padding: 1rem;
+  }
+
+  .update-user .update-card {
+    padding: 1.5rem;
+  }
+
+  .update-user .update-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .update-user .update-title {
+    font-size: 2rem;
+  }
+
+  .update-user .update-header > div {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .update-user .update-dashboard,
+  .update-user .update-logout {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .update-user .field span {
+    font-size: 1rem;
+  }
+
+  .update-user .field input,
+  .update-user .field textarea {
+    font-size: 1rem;
+  }
+
+  .update-user .section-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* ========================================================================== */
+/* THEME VARIABLES                                                            */
+/* ========================================================================== */
+
+:root {
+  --bg-gradient: linear-gradient(to right bottom, #42a5f5, #a855f7, #ec4899);
+  --card-bg: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --input-border: #d1d5db;
+  --input-focus: #60a5fa;
+  --input-bg: transparent;
+  --icon-color: #9ca3af;
+  --button-bg: linear-gradient(to right, #25aae1, #b84fce);
+  --button-text: #ffffff;
+  --card-border: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  --bg-gradient: linear-gradient(to right bottom, #0f172a, #1e293b, #334155);
+  --card-bg: #1f2937;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --input-border: #4b5563;
+  --input-focus: #60a5fa;
+  --input-bg: #1f2937;
+  --icon-color: #ffffff;
+  --button-bg: linear-gradient(to right, #2563eb, #9333ea);
+  --button-text: #ffffff;
+  --card-border: #374151;
+}

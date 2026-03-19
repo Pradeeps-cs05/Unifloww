@@ -1,0 +1,227 @@
+/* --- Scoped under .signup-page to create a consistent theme --- */
+.signup-page .signup-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-gradient);
+  font-family: "Poppins", "Inter", sans-serif;
+  padding: 1rem;
+  transition: background 0.3s ease;
+}
+
+.signup-page .signup-card { /* Using .signup-card class for shared styles */
+  width: 100%;
+  max-width: 450px;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: var(--text-main);
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Typography & Form Styles */
+.signup-page .signup-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+.signup-page .signup-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.signup-page .signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.signup-page .form-group {
+  text-align: left;
+}
+
+.signup-page .form-label {
+  display: block;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.signup-page .input-wrapper {
+  position: relative;
+}
+
+.signup-page .input-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--icon-color);
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.signup-page .form-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--input-border);
+  background: var(--input-bg);
+  padding: 0.5rem 0 0.5rem 2rem;
+  color: var(--input-text);
+  outline: none;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+}
+
+.signup-page .form-input::placeholder {
+  color: var(--input-placeholder);
+  transition: color 0.3s ease;
+}
+
+.signup-page .form-input:focus {
+  border-bottom-color: var(--input-focus);
+  transition: border-color 0.3s ease;
+}
+
+/* Autofill fix */
+.signup-page input:-webkit-autofill,
+.signup-page input:-webkit-autofill:hover,
+.signup-page input:-webkit-autofill:focus,
+.signup-page input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--input-text) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset;
+  transition: background-color 5000s ease-in-out 0s, color 0.3s ease;
+  font-family: inherit;
+  font-size: 1.125rem !important;
+}
+
+.signup-page input:-moz-autofill {
+  box-shadow: 0 0 0px 1000px var(--input-bg) inset;
+  -moz-text-fill-color: var(--input-text);
+  font-size: 1.125rem !important;
+  font-family: inherit;
+}
+
+/* Password Field */
+.signup-page .password-input {
+  padding-right: 2.5rem;
+}
+
+.signup-page .password-toggle {
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--icon-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.signup-page .password-toggle:hover {
+  color: var(--icon-hover);
+}
+
+/* Feedback */
+.signup-page .feedback {
+  min-height: 1.25rem;
+  font-size: 0.875rem;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.signup-page .error-text { color: #dc2626; }
+.signup-page .success-text { color: #16a34a; }
+
+/* Submit Button */
+.signup-page .submit-btn {
+  width: 100%;
+  padding: 0.85rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 50px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.signup-page .submit-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.signup-page .submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Signup Text & Links */
+.signup-page .signup-text {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-top: 2rem;
+  transition: color 0.3s ease;
+}
+
+.signup-page .signup-link {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.signup-page .signup-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Theme Variables --- */
+:root {
+  --bg-gradient: linear-gradient(to right bottom, #42a5f5, #a855f7, #ec4899);
+  --card-bg: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --input-focus: #60a5fa;
+  --input-text: #111827;
+  --input-placeholder: #9ca3af;
+  --icon-color: #9ca3af;
+  --icon-hover: #374151;
+  --button-bg: linear-gradient(to right, #25aae1, #b84fce);
+  --button-text: #ffffff;
+  --link-color: #3b82f6;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-gradient: linear-gradient(to right bottom, #0f172a, #1e293b, #334155);
+  --card-bg: #1f2937;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --input-bg: #1f2937;
+  --input-border: #4b5563;
+  --input-focus: #60a5fa;
+  --input-text: #ffffff;
+  --input-placeholder: #9ca3af;
+  --icon-color: #ffffff;
+  --icon-hover: #f3f4f6;
+  --button-bg: linear-gradient(to right, #2563eb, #9333ea);
+  --button-text: #ffffff;
+  --link-color: #60a5fa;
+}

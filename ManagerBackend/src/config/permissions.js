@@ -1,0 +1,27 @@
+// permissions.js
+export const PERMISSIONS = {
+  CREATE: "CREATE",
+  READ: "READ",
+  UPDATE: "UPDATE",
+  DELETE: "DELETE",
+  READ_OWN: "READ_OWN",
+  UPDATE_OWN: "UPDATE_OWN",
+};
+
+export const ROLE_PERMISSIONS = {
+  root_admin: [
+    PERMISSIONS.CREATE,
+    PERMISSIONS.READ,
+    PERMISSIONS.UPDATE,
+    PERMISSIONS.DELETE,
+  ],
+  admin: [
+    PERMISSIONS.CREATE,
+    PERMISSIONS.READ,
+    PERMISSIONS.UPDATE,
+  ],
+  user: [
+    PERMISSIONS.READ_OWN,
+    PERMISSIONS.UPDATE_OWN,
+  ],
+};
