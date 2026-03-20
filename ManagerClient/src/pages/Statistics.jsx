@@ -3,6 +3,7 @@ import API_BASE_URL from "../apiConfig";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid
 } from "recharts";
+import "./Statistics.css";
 
 export default function Statistics() {
   const [stats, setStats] = useState(null);
@@ -18,7 +19,7 @@ export default function Statistics() {
       .catch(err => console.error(err));
   }, []);
 
-  if (!stats) return <p>Loading...</p>;
+  if (!stats) return <p className="loading">Loading...</p>;
 
   const chartData = stats.monthlyClients.map(item => ({
     name: `${item._id.month}/${item._id.year}`,
@@ -26,27 +27,40 @@ export default function Statistics() {
   }));
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>📊 Statistics</h1>
+    <div className="stats-container">
+      <h1 className="stats-title">📊 Dashboard Statistics</h1>
 
-      <h3>Total Clients: {stats.totalClients}</h3>
-      <h3>Total Users: {stats.totalUsers}</h3>
-
-      <h2>📈 Monthly Clients</h2>
-      <BarChart width={500} height={300} data={chartData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Bar dataKey="clients" />
-      </BarChart>
-
-      <h2>Recent Activity</h2>
-      {stats.recentClients.map((c, i) => (
-        <div key={i}>
-          {c.name} ({c.email})
+      <div className="stats-cards">
+        <div className="stats-card">
+          <h3>Total Clients</h3>
+          <p>{stats.totalClients}</p>
         </div>
-      ))}
+
+        <div className="stats-card">
+          <h3>Total Users</h3>
+          <p>{stats.totalUsers}</p>
+        </div>
+      </div>
+
+      <div className="chart-section">
+        <h2>📈 Monthly Clients</h2>
+        <BarChart width={600} height={300} data={chartData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="clients" />
+        </BarChart>
+      </div>
+
+      <div className="activity-section">
+        <h2>🔥 Recent Activity</h2>
+        {stats.recentClients.map((c, i) => (
+          <div key={i} className="activity-item">
+            {c.name} ({c.email})
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
