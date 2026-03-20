@@ -43,6 +43,7 @@ export default function Login() {
     setLoading(true);
     try {
       const res = await login(trimmedForm);
+      localStorage.setItem("token", res.token);
       loginUser(res.user || { email: trimmedForm.email });
       setSuccess(res?.message || "Login successful!");
       navigate("/dashboard", { replace: true });
