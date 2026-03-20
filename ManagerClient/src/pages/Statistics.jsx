@@ -41,7 +41,7 @@ export default function Statistics() {
         <Bar dataKey="clients" />
       </BarChart>
 
-      <h2>🔥 Recent Activity</h2>
+      <h2>Recent Activity</h2>
       {stats.recentClients.map((c, i) => (
         <div key={i}>
           {c.name} ({c.email})

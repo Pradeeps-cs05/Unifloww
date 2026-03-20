@@ -1,0 +1,43 @@
+.stats-container {
+  padding: 30px;
+  font-family: Arial;
+}
+
+.stats-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.stats-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.stats-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.stats-card p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.chart-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.activity-section {
+  margin-top: 40px;
+}
+
+.activity-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
