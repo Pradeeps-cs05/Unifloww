@@ -320,6 +320,47 @@ router.delete(
     }
   }
 );
+// -------------------------------------------------------
+// Statistics API
+// -------------------------------------------------------
+router.get("/stats", auth, async (req, res) => {
+  try {
+    const totalClients = await Client.countDocuments();
+    const totalUsers = await User.countDocuments();
+
+    // 📊 Monthly clients (last 6 months)
+    const monthlyClients = await Client.aggregate([
+      {
+        $group: {
+          _id: {
+            year: { $year: "$createdAt" },
+            month: { $month: "$createdAt" }
+          },
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { "_id.year": 1, "_id.month": 1 } },
+      { $limit: 6 }
+    ]);
+
+    // 🔥 Recent activity
+    const recentClients = await Client.find()
+      .sort({ createdAt: -1 })
+      .limit(5)
+      .select("name email createdAt");
+
+    res.json({
+      totalClients,
+      totalUsers,
+      monthlyClients,
+      recentClients
+    });
+
+  } catch (err) {
+    console.error("Stats error:", err);
+    res.status(500).json({ error: "Failed to fetch stats" });
+  }
+});
 
 
 export default router;
