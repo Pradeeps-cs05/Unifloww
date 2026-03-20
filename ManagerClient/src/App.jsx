@@ -11,6 +11,7 @@ import ViewClients from "./pages/ViewClients";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { ThemeProvider } from "./components/ThemeContext";
+import Statistics from "./pages/Statistics";
 import ThemeToggle from "./components/ThemeToggle";
 
 export default function App() {
@@ -66,6 +67,7 @@ export default function App() {
 
             {/* Redirect all unknown paths to home */}
             <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/statistics" element={<Statistics />} />
           </Routes>
         </Router>
       </ThemeProvider>
