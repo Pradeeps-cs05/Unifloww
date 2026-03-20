@@ -37,7 +37,6 @@ useEffect(() => {
 }, []);
 
   if (!stats) {
-    return <div>Loading...</div>;
   }
 
   return (
@@ -108,7 +107,7 @@ useEffect(() => {
         </div>
 
         <div style={{ marginTop: "40px" }}>
-  <h2>👀 Daily Activity (Last 7 Days)</h2>
+  <h2> Daily Activity (Last 7 Days)</h2>
 
   <div style={{
     height: "300px",
