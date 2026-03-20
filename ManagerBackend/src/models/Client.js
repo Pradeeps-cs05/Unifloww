@@ -6,6 +6,7 @@ const clientSchema = new mongoose.Schema(
     name: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String },
+    userId: {type: mongoose.Schema.Types.ObjectId,ref: "User"},
     education: { type: String },
     college: { type: String },
     company: { type: String },
@@ -31,6 +32,7 @@ const clientSchema = new mongoose.Schema(
     deletedAt: { type: Date, default: null },
   },
   { timestamps: true }
+  
 );
 
 export default mongoose.model("Client", clientSchema);

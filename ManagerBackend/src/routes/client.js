@@ -4,6 +4,7 @@ import multerS3 from "multer-s3";
 import { S3Client } from "@aws-sdk/client-s3";
 import Client from "../models/Client.js";
 import Counter from "../models/Counter.js";
+import User from "../models/User.js";
 import { requirePermission } from "../middleware/requirePermission.js";
 import { PERMISSIONS } from "../config/permissions.js";
 import auth from "../middleware/auth.js"; // JWT auth middleware that sets req.user
@@ -53,6 +54,7 @@ router.post(
 
 
       const { email } = req.body;
+      const user = await User.findOne({ email });
 
       // Case-insensitive check if email already exists
       const existingClient = await Client.findOne({ email: { $regex: `^${email}$`, $options: "i" } });
@@ -84,6 +86,8 @@ router.post(
         ...req.body,
         documents: docs,
         createdBy: createdBy,
+
+        userId: user ? user._id : null
       });
 
       res.status(201).json({ message: "Client created", client });
@@ -126,7 +130,7 @@ router.get(
       // 🔒 Restrict to own data if permissionScope === "own"
       if (req.permissionScope === "own") {
         filter = {
-          $and: [filter, { email: req.user.email }], // only return logged-in user's email
+          $and: [filter, { userId: req.user.id }], // only return logged-in user's client records
         };
       }
 
@@ -255,7 +259,7 @@ router.get(
       // 🔒 Restrict to own scope if needed
       if (req.permissionScope === "own") {
         filter = {
-          $and: [filter, { email: req.user.email }],
+          $and: [filter, { userId: req.user.id }],
         };
       }
 
