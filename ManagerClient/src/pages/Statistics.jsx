@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
   CartesianGrid
 } from "recharts";
+import { PieChart, Pie, Cell, Legend } from "recharts";
 
 export default function Statistics() {
 const [stats, setStats] = useState(null);
@@ -58,6 +59,31 @@ useEffect(() => {
           </div>
         </div>
 
+    <div style={{ marginTop: "40px" }}>
+  <h2>🥧 Users vs Clients</h2>
+
+  <ResponsiveContainer width="100%" height={300}>
+    <PieChart>
+      <Pie
+        data={[
+          { name: "Clients", value: stats?.totalClients || 0 },
+          { name: "Users", value: stats?.totalUsers || 0 }
+        ]}
+        dataKey="value"
+        cx="50%"
+        cy="50%"
+        outerRadius={100}
+        label
+      >
+        <Cell fill="#8884d8" />
+        <Cell fill="#82ca9d" />
+      </Pie>
+      <Legend />
+      <Tooltip />
+    </PieChart>
+  </ResponsiveContainer>
+</div>
+
         {/* CHART SECTION */}
         <div style={{ marginTop: "40px" }}>
           <h2>📈 Monthly Clients</h2>
@@ -80,6 +106,27 @@ useEffect(() => {
 </ResponsiveContainer>
           </div>
         </div>
+
+        <div style={{ marginTop: "40px" }}>
+  <h2>👀 Daily Activity (Last 7 Days)</h2>
+
+  <div style={{
+    height: "300px",
+    background: "#fff",
+    borderRadius: "12px",
+    padding: "20px"
+  }}>
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart data={stats?.dailyActivity || []}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="day" />
+        <YAxis />
+        <Tooltip />
+        <Bar dataKey="count" radius={[10, 10, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  </div>
+</div>
 
         {/* ACTIVITY */}
         <div style={{ marginTop: "40px" }}>

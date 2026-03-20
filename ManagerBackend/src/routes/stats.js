@@ -8,15 +8,12 @@ const router = express.Router();
 // 📊 GET STATS
 router.get("/", auth, async (req, res) => {
   try {
-    // 🔢 TOTAL COUNTS
     const totalClients = await Client.countDocuments({ deleted: { $ne: true } });
     const totalUsers = await User.countDocuments();
 
-    // 📈 MONTHLY CLIENTS
+    // 📈 Monthly Clients
     const monthlyClients = await Client.aggregate([
-      {
-        $match: { deleted: { $ne: true } }
-      },
+      { $match: { deleted: { $ne: true } } },
       {
         $group: {
           _id: {
@@ -26,21 +23,46 @@ router.get("/", auth, async (req, res) => {
           count: { $sum: 1 }
         }
       },
-      {
-        $sort: { "_id.year": 1, "_id.month": 1 }
-      }
+      { $sort: { "_id.year": 1, "_id.month": 1 } }
     ]);
 
-    // 🔄 FORMAT DATA
     const formattedMonthly = monthlyClients.map(item => ({
       month: `${item._id.month}/${item._id.year}`,
+      count: item.count
+    }));
+
+    // 📅 Daily Activity (last 7 days)
+    const last7Days = await Client.aggregate([
+      {
+        $match: {
+          createdAt: {
+            $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+          },
+          deleted: { $ne: true }
+        }
+      },
+      {
+        $group: {
+          _id: {
+            day: { $dayOfMonth: "$createdAt" },
+            month: { $month: "$createdAt" }
+          },
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { "_id.day": 1 } }
+    ]);
+
+    const formattedDaily = last7Days.map(item => ({
+      day: `${item._id.day}/${item._id.month}`,
       count: item.count
     }));
 
     res.json({
       totalClients,
       totalUsers,
-      monthlyClients: formattedMonthly
+      monthlyClients: formattedMonthly,
+      dailyActivity: formattedDaily
     });
 
   } catch (err) {
