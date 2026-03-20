@@ -5,6 +5,7 @@ import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import clientRoutes from "./routes/client.js";
 import fileRoutes from "./routes/file.js";
+import statsRoutes from "./routes/stats.js";
 import path from "path";
 import { fileURLToPath } from "url"; // <-- needed for __dirname
 
@@ -47,7 +48,8 @@ app.use(
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/client", clientRoutes);
-app.use("/uploads", express.static("uploads")); // to serve uploaded files
+app.use("/uploads", express.static("uploads"));
+app.use("/api/stats", statsRoutes); // to serve statistics
 app.use("/api/file", fileRoutes);
 
 const PORT = process.env.PORT || 5000;

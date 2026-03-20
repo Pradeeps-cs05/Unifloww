@@ -1,6 +1,44 @@
-import "./Dashboard.css"; // reuse same style
+import "./Dashboard.css";
+import { useEffect, useState } from "react"; // reuse same style
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid
+} from "recharts";
 
 export default function Statistics() {
+const [stats, setStats] = useState(null);
+
+useEffect(() => {
+  async function fetchStats() {
+    try {
+      const res = await fetch(
+        "https://api.pradeeptech.online/api/stats",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
+
+      const data = await res.json();
+      setStats(data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  fetchStats();
+}, []);
+
+  if (!stats) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="dashboard-page">
       <div className="dashboard-card">
@@ -31,7 +69,15 @@ export default function Statistics() {
             alignItems: "center",
             justifyContent: "center"
           }}>
-            Chart will come here
+            <ResponsiveContainer width="100%" height={300}>
+  <BarChart data={stats?.monthlyClients || []}>
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey="month" />
+    <YAxis />
+    <Tooltip />
+    <Bar dataKey="count" radius={[10, 10, 0, 0]} />
+  </BarChart>
+</ResponsiveContainer>
           </div>
         </div>
 
